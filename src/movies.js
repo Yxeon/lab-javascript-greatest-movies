@@ -12,19 +12,72 @@ function getAllDirectors(movies) {
 }
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
-function howManyMovies() {}
+function howManyMovies(movies) {
+  let spielberg = movies.filter((director) => director.director === "Steven Spielberg" && director.genre.includes("Drama"));
+  return spielberg.length;
+}
 
 // Iteration 3: All scores average - Get the average of all scores with 2 decimals
-function scoresAverage() {}
+function scoresAverage(moviesArray) {
+  if(moviesArray.length == 0){return 0}
+  
+  const averageScore = moviesArray.reduce(
+    
+    (acc, el) => acc += el.score? el.score:0,0
+  );
+  return  Number((averageScore/moviesArray.length).toFixed(2))
+  
+  
+}
 
+
+scoresAverage(movies); 
 // Iteration 4: Drama movies - Get the average of Drama Movies
-function dramaMoviesScore() {}
+function dramaMoviesScore(moviesArray) {
+ 
+  const dramaMoviesArr = moviesArray.filter((peli,index)=>{
+    return peli.genre.includes('Drama')})
+  
+    if(dramaMoviesArr.length === 0){return 0}
+    const averageDramaScore = dramaMoviesArr.reduce(
+    //Recordar ternarias
+    (acc, el) => acc += el.score? el.score:0,0
+  );
+  return  Number((averageDramaScore/dramaMoviesArr.length).toFixed(2))
+}
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
-function orderByYear() {}
+function orderByYear(moviesArray) {
+  let clonedArray = [...moviesArray]
+  
+  clonedArray.sort((a,b)=>{
+    if(a.year === b.year){
+      if (a.title > b.title) return 1;
+      if (a.title < b.title) return -1;
+      return 0;
+    }
+    if (a.year > b.year) return 1;
+    if (a.year < b.year) return -1;
+    return 0;
+  })
+
+  return clonedArray
+}
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
-function orderAlphabetically() {}
+function orderAlphabetically(moviesArray) {
+  let clonedArray = [...moviesArray]
+  
+  clonedArray.sort((a,b)=>{
+    if (a.title < b.title) return -1;
+    if (a.title > b.title) return 1;
+    return 0;
+  })
+
+  let strClonedArray = clonedArray.map((element,index)=>element.title)
+  
+  return strClonedArray.slice(0,20)
+}
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes() {}

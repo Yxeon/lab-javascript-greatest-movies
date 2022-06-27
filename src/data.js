@@ -886,7 +886,7 @@ const movies = [
     director: 'Akira Kurosawa',
     duration: '1h 28min',
     genre: ['Crime', 'Drama', 'Mystery'],
-    score: 8.3
+    score:8.3
   },
   {
     title: 'Indiana Jones and the Last Crusade',
